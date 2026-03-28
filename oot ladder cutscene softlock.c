@@ -20,6 +20,11 @@
 // anything that would let PLAYER_CSACTION_7 run such as get onto ground/water, into climb state (or the
 // other states that would lead to func_80852944).
 
+// Fix: Can be approached in several ways, but simply changing the interrupt check to
+// if (interruptResult == PLAYER_INTERRUPT_NEW_ACTION && this->unk_6AD != 3)
+// retains all original function while only preventing interrupt in the very rare case of active cutscene.
+// As it lets the animation play fully, it also looks natural.
+
 void Player_Action_DismountLadder(Player* this, PlayState* play) {
     ...
 
